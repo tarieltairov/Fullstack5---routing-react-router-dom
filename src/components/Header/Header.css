@@ -1,0 +1,28 @@
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 0 20px;
+}
+
+.header_nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: black;
+}
+
+.header_link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header_link:hover {
+  color: red;
+}
+
+.active_link {
+  text-decoration: underline;
+}

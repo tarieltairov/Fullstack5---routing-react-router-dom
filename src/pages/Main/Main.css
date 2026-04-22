@@ -1,6 +1,16 @@
+.main-page {
+  padding: 20px;
+}
+
+.main-page_title {
+  margin: 0 0 20px;
+  font-size: 28px;
+  color: #222;
+}
+
 .products-list {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: stretch;
   gap: 20px;
-  padding: 0 20px;
 }

@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
-import type { Product } from '../../types/product';
 import { products } from '../../mock/products';
+import './Product.css';
 
 export function Product() {
   const { id } = useParams();
@@ -12,12 +12,16 @@ export function Product() {
   }
 
   return (
-    <div>
-      <h1>Страница продукта</h1>
+    <div className='product-page'>
+      <h1 className='product-page_title'>Страница продукта</h1>
 
-      <h2>{currentProduct?.title}</h2>
-      <p>цена: {currentProduct?.price}</p>
-      <img src={currentProduct?.imageUrl} alt='' />
+      <h2 className='product-page_name'>{currentProduct.title}</h2>
+      <p className='product-page_price'>цена: {currentProduct.price}</p>
+      <img
+        className='product-page_img'
+        src={currentProduct.imageUrl}
+        alt={currentProduct.title}
+      />
     </div>
   );
 }

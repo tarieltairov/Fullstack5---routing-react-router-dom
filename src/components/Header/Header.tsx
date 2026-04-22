@@ -25,7 +25,7 @@ const pages = [
 export function Header() {
   return (
     <header>
-      <img src='' alt='logo' />
+      <div className='header_logo'>Shop</div>
 
       <nav className='header_nav'>
         {pages.map((route, index) => (
@@ -33,9 +33,6 @@ export function Header() {
             className={(val) =>
               `${val.isActive ? 'active_link' : ''} header_link`
             }
-            style={(val) => ({
-              color: val.isActive ? '#6366f1' : '#888',
-            })}
             key={index}
             to={route.to}
           >

@@ -14,3 +14,7 @@
   align-items: stretch;
   gap: 20px;
 }
+
+.main-page_search {
+  margin-bottom: 60px;
+}

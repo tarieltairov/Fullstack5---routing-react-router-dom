@@ -15,4 +15,10 @@ export const products: Product[] = [
     imageUrl:
       'https://opis-cdn.tinkoffjournal.ru/mercury/01-kolbaski-sosiski.png',
   },
+  {
+    id: 3,
+    price: 2000,
+    title: 'Мясо',
+    imageUrl: 'https://chmknn.ru/wp-content/uploads/2017/08/150770.jpg',
+  },
 ];

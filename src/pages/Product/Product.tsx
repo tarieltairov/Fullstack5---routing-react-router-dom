@@ -1,8 +1,11 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { products } from '../../mock/products';
 import './Product.css';
+import { BackButton } from '../../components/BackButton';
 
 export function Product() {
+  const location = useLocation();
+
   const { id } = useParams();
 
   const currentProduct = products.find((item) => item.id === Number(id));
@@ -13,6 +16,12 @@ export function Product() {
 
   return (
     <div className='product-page'>
+      <BackButton
+        btnText={
+          location.state?.from === '/' ? 'Вернуться на главную' : 'Назад'
+        }
+      />
+
       <h1 className='product-page_title'>Страница продукта</h1>
 
       <h2 className='product-page_name'>{currentProduct.title}</h2>

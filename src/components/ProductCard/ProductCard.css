@@ -7,7 +7,9 @@
   border: 1px solid lightgray;
   cursor: pointer;
   background: #fff;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .product-card:hover {
@@ -36,4 +38,24 @@
   font-size: 16px;
   font-weight: 500;
   color: #6366f1;
+}
+
+.product-card__actions {
+  padding: 0 16px 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.product-card__btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.product-card__btn:hover {
+  background: #4f46e5;
 }

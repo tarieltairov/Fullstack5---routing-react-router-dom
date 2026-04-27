@@ -1,36 +1,57 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import "./Cart.css";
+import { Counter } from '../../components/Counter';
+import { useCart } from '../../context/CartContext';
+import './Cart.css';
 
 export function Cart() {
-  const { cart, addToCart, removeItemFromCart, increaseItem, decreaseItem } = useContext(CartContext)!;
+  const { cart, removeItemFromCart, totalPrice } = useCart();
+
+  console.log(totalPrice);
+
+  if (cart.length === 0) {
+    return (
+      <div className='cart'>
+        <h2>Корзина пуста</h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="cart">
-      <div className="cart__list">
-        {cart.length > 0 ? (
-          cart.map((item) => {
-            return (
-              <div className="cart__item">
-                <img src={item.imageUrl} alt="" />
-                <div className="cart__item_right">
-                  <h2>{item.title}</h2>
-                  <h3>{item.price} сом</h3>
-                  <div className="cart__item_controls">
-                    <div>
-                      <button onClick={() => decreaseItem(item.id)} className="cart__item_decrease">-</button>
-                      <button onClick={() => increaseItem(item.id)} className="cart__item_increase">+</button>
-                    </div>
-                    <button onClick={() => removeItemFromCart(item.id)} className="cart__item_remove">Удалить</button>
-                  </div>
-                  <h3>{item.quantity}</h3>
+    <div className='cart'>
+      <h1 className='cart__title'>Корзина</h1>
+
+      <div className='cart__list'>
+        {cart.map((item) => {
+          return (
+            <div key={item.id} className='cart__item'>
+              <img
+                src={item.imageUrl}
+                alt={item.title}
+                className='cart__item_img'
+              />
+              <div className='cart__item_right'>
+                <h2 className='cart__item_title'>{item.title}</h2>
+                <h3 className='cart__item_price'>{item.price} сом</h3>
+                <div className='cart__item_controls'>
+                  <Counter productId={item.id} />
+
+                  <button
+                    onClick={() => removeItemFromCart(item.id)}
+                    className='cart__item_remove'
+                  >
+                    Удалить
+                  </button>
                 </div>
+                <p className='cart__item_subtotal'>
+                  Сумма: <b>{item.price * item.quantity} сомы</b>
+                </p>
               </div>
-            );
-          })
-        ) : (
-          <h2>Нет товаров в корзине</h2>
-        )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className='cart__total'>
+        Итого: <b>{totalPrice} сом</b>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { Main } from './pages/Main';
 import { Product } from './pages/Product';
 import { Layout } from './components/Layout';
 import { NotFound } from './pages/NotFound';
+import { Cart } from './pages/Cart/Cart';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route index element={<Main />} />
         <Route path='about' element={<h1>Страница О нас</h1>} />
         <Route path='product/:id' element={<Product />} />
+        <Route path='cart' element={<Cart />} />
       </Route>
 
       <Route path='/login' element={<h1>Страница авторизации</h1>} />

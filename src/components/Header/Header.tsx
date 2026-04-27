@@ -13,6 +13,10 @@ const pages = [
     label: 'Главная',
   },
   {
+    to: '/cart',
+    label: 'Корзина',
+  },
+  {
     to: '/about',
     label: 'О нас',
   },

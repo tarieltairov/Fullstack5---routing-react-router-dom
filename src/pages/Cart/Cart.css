@@ -1,0 +1,24 @@
+.cart__list {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.cart__item {
+    padding: 16px;
+    display: flex;
+    height: 250px;
+    justify-content: space-between;
+    background: #c1c1c1;
+}
+
+.cart__item_right {
+
+}
+
+.cart__item > img {
+    width: 300px;
+    background: white;
+}

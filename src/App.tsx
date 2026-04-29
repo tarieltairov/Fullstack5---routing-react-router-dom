@@ -1,5 +1,5 @@
 // есть 2 способа настройки маршрутизации (react-router-dom)
-
+import './styles/global.css';
 import { Route, Routes } from 'react-router-dom';
 import { Main } from './pages/Main';
 import { Product } from './pages/Product';

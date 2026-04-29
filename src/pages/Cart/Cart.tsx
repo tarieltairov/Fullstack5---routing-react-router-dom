@@ -1,11 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { Counter } from '../../components/Counter';
 import { useCart } from '../../context/CartContext';
 import './Cart.css';
 
 export function Cart() {
   const { cart, removeItemFromCart, totalPrice } = useCart();
-
-  console.log(totalPrice);
+  const navigate = useNavigate();
 
   if (cart.length === 0) {
     return (
@@ -15,6 +15,18 @@ export function Cart() {
     );
   }
 
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
+  const onRemoveItemClick = (
+    productId: number,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    e.stopPropagation();
+    removeItemFromCart(productId);
+  };
+
   return (
     <div className='cart'>
       <h1 className='cart__title'>Корзина</h1>
@@ -22,7 +34,11 @@ export function Cart() {
       <div className='cart__list'>
         {cart.map((item) => {
           return (
-            <div key={item.id} className='cart__item'>
+            <div
+              onClick={() => handleProductClick(item.id)}
+              key={item.id}
+              className='cart__item'
+            >
               <img
                 src={item.imageUrl}
                 alt={item.title}
@@ -35,7 +51,7 @@ export function Cart() {
                   <Counter productId={item.id} />
 
                   <button
-                    onClick={() => removeItemFromCart(item.id)}
+                    onClick={(e) => onRemoveItemClick(item.id, e)}
                     className='cart__item_remove'
                   >
                     Удалить

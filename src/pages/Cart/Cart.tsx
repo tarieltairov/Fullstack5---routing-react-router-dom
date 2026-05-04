@@ -66,8 +66,17 @@ export function Cart() {
         })}
       </div>
 
-      <div className='cart__total'>
-        Итого: <b>{totalPrice} сом</b>
+      <div className='cart__footer'>
+        <div className='cart__total'>
+          Итого: <b>{totalPrice} сом</b>
+        </div>
+
+        <button
+          onClick={() => navigate('/checkout')}
+          className='cart__checkout-btn'
+        >
+          Оформить заказ
+        </button>
       </div>
     </div>
   );

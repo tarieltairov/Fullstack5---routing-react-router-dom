@@ -6,6 +6,8 @@ import { Product } from './pages/Product';
 import { Layout } from './components/Layout';
 import { NotFound } from './pages/NotFound';
 import { Cart } from './pages/Cart/Cart';
+import { Checkout } from './pages/Checkout';
+import { CheckoutSuccess } from './pages/CheckoutSuccess';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path='about' element={<h1>Страница О нас</h1>} />
         <Route path='product/:id' element={<Product />} />
         <Route path='cart' element={<Cart />} />
+
+        <Route path='checkout' element={<Checkout />} />
+        <Route path='checkout/success' element={<CheckoutSuccess />} />
       </Route>
 
       <Route path='/login' element={<h1>Страница авторизации</h1>} />

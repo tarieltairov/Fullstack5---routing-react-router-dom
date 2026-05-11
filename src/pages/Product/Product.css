@@ -46,3 +46,9 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.product-page_description {
+  margin-bottom: 16px;
+  color: #4b5563;
+  line-height: 1.5;
+}

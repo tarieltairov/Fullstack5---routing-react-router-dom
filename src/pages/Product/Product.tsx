@@ -32,10 +32,16 @@ export function Product() {
 
       <h2 className='product-page_name'>{currentProduct.title}</h2>
       <p className='product-page_price'>цена: {currentProduct.price}</p>
+
+      <p className='product-page_description'>{currentProduct.description}</p>
+
       <img
         className='product-page_img'
         src={currentProduct.imageUrl}
         alt={currentProduct.title}
+        onError={(event) => {
+          event.currentTarget.src = `https://placehold.co/600x400/16a34a/ffffff?text=${currentProduct.title}`;
+        }}
       />
 
       <div className='product-page_actions'>

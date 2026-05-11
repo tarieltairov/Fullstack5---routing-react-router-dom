@@ -6,7 +6,9 @@ import { Counter } from '../Counter';
 
 type ProductCardProps = Product;
 
-export function ProductCard({ imageUrl, price, title, id }: ProductCardProps) {
+export function ProductCard(product: ProductCardProps) {
+  const { id, imageUrl, title, price } = product;
+
   const { addToCart, getItemQuantity } = useCart();
 
   const navigate = useNavigate();
@@ -20,6 +22,9 @@ export function ProductCard({ imageUrl, price, title, id }: ProductCardProps) {
         className='product-card_img'
         src={imageUrl}
         alt='product-image'
+        onError={(event) => {
+          event.currentTarget.src = `https://placehold.co/400x400/16a34a/ffffff?text=${title}`;
+        }}
       />
       <h3 className='product-card_title'>{title}</h3>
       <p className='product-card_price'>{price}</p>
@@ -30,7 +35,7 @@ export function ProductCard({ imageUrl, price, title, id }: ProductCardProps) {
         ) : (
           <button
             className='product-card__btn'
-            onClick={() => addToCart({ imageUrl, price, title, id })}
+            onClick={() => addToCart(product)}
           >
             В корзину
           </button>

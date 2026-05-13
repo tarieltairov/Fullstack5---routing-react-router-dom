@@ -33,7 +33,8 @@ export const products: Product[] = [
     title: 'Кефир',
     category: 'Молочные',
     description: 'Кефир 1%, обогащённый бифидобактериями.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-rwxOAk7kRGbUB0goHDIjgfPhhWrsD0ydaQ&s',
   },
   {
     id: 5,
@@ -41,7 +42,7 @@ export const products: Product[] = [
     title: 'Сыр',
     category: 'Молочные',
     description: 'Российский сыр, выдержка 60 дней.',
-    imageUrl: ' ',
+    imageUrl: 'https://www.apteka.ua/wp/wp-content/uploads/2015/09/345636.jpg',
   },
   {
     id: 6,
@@ -49,7 +50,8 @@ export const products: Product[] = [
     title: 'Яблоки',
     category: 'Овощи и фрукты',
     description: 'Яблоки сорта Гала, сладкие и хрустящие.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://e1.edimdoma.ru/data/ingredients/0000/2374/2374-ed4_wide.jpg?1487746348',
   },
   {
     id: 7,
@@ -57,7 +59,8 @@ export const products: Product[] = [
     title: 'Картофель',
     category: 'Овощи и фрукты',
     description: 'Молодой картофель, идеален для жарки и варки.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSETDstTEaSNNALGFN-dWT0RKtErNH2axNsdg&s',
   },
   {
     id: 8,
@@ -65,7 +68,7 @@ export const products: Product[] = [
     title: 'Сок апельсиновый',
     category: 'Напитки',
     description: 'Натуральный сок без сахара, 1 литр.',
-    imageUrl: ' ',
+    imageUrl: 'https://aqua-life.spb.ru/foto/114541013072020.jpg',
   },
   {
     id: 9,
@@ -73,7 +76,8 @@ export const products: Product[] = [
     title: 'Вода',
     category: 'Напитки',
     description: 'Питьевая вода без газа, 1.5 литра.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://png.pngtree.com/png-clipart/20240305/original/pngtree-water-bottle-symbol-png-image_14513436.png',
   },
   {
     id: 10,
@@ -81,7 +85,8 @@ export const products: Product[] = [
     title: 'Хлеб',
     category: 'Бакалея',
     description: 'Свежий пшеничный хлеб из печи.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://m.dom-eda.com/uploads/images/catalog/item/88f4561953/ce4cf9522d_1000.jpg',
   },
   {
     id: 11,
@@ -89,7 +94,7 @@ export const products: Product[] = [
     title: 'Макароны',
     category: 'Бакалея',
     description: 'Макароны твёрдых сортов пшеницы, 500 г.',
-    imageUrl: ' ',
+    imageUrl: 'https://ananas.kg/image/cache/catalog/11667-700x770.jpg',
   },
   {
     id: 12,
@@ -97,7 +102,8 @@ export const products: Product[] = [
     title: 'Бананы',
     category: 'Овощи и фрукты',
     description: 'Спелые бананы из Эквадора, 1 кг.',
-    imageUrl: ' ',
+    imageUrl:
+      'https://zakaz.s-globus.ru/media/Zakaz/Product/2024-04-10/Zakaz/Product/2024-04-10/343300fa2a36738d58195f8d79aa1770_0.jpg',
   },
 ];
 

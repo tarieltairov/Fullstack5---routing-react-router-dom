@@ -1,20 +1,63 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import { Pagination } from '../../components/Pagination';
 import { ProductCard } from '../../components/ProductCard';
 import { CATEGORIES, products } from '../../mock/products';
+import { buildNextParams } from '../../utils/searchParams';
 import './Main.css';
 import { useSearchParams } from 'react-router-dom';
 
-export function Main() {
-  const [page, setPage] = useState(1);
+const PER_PAGE_OPTIONS = [3, 4, 6, 12] as const;
+const DEFAULT_PER_PAGE = 3;
 
+export function Main() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get('search') ?? '';
+  const category = searchParams.get('category') ?? '';
+  const sort = searchParams.get('sort') ?? '';
+  const page = Number(searchParams.get('page') ?? '1');
+  const perPageRaw = Number(searchParams.get('perPage') ?? DEFAULT_PER_PAGE);
 
-  const filtered = products.filter((p) =>
+  const perPage = PER_PAGE_OPTIONS.includes(
+    perPageRaw as (typeof PER_PAGE_OPTIONS)[number],
+  )
+    ? perPageRaw
+    : DEFAULT_PER_PAGE;
+
+  const updateParam = (key: string, value: string) => {
+    setSearchParams(buildNextParams(searchParams, key, value));
+  };
+
+  // логика поиска
+  const bySearch = products.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase()),
   );
+
+  // логика филтрации по категории
+  const byCategory = category
+    ? bySearch.filter((p) => p.category === category)
+    : bySearch;
+
+  const sorted = useMemo(() => {
+    const list = [...byCategory];
+
+    switch (sort) {
+      case 'price-asc':
+        return list.sort((a, b) => a.price - b.price);
+      case 'price-desc':
+        return list.sort((a, b) => b.price - a.price);
+      case 'name-asc':
+        return list.sort((a, b) => a.title.localeCompare(b.title));
+      case 'name-desc':
+        return list.sort((a, b) => b.title.localeCompare(a.title));
+      default:
+        return list;
+    }
+  }, [byCategory, sort]);
+
+  const totalPages = Math.ceil(sorted.length / perPage);
+
+  const paginated = sorted.slice((page - 1) * perPage, page * perPage);
 
   return (
     <div className='main-page'>
@@ -25,10 +68,16 @@ export function Main() {
           className='main-page_search'
           type='text'
           placeholder='Найти товар'
-          onChange={(e) => setSearchParams({ search: e.target.value })}
+          value={search}
+          onChange={(e) => updateParam('search', e.target.value)}
         />
 
-        <select className='main-page_select'>
+        {/* ФИЛЬТР ПО КАТЕГОРИИ */}
+        <select
+          className='main-page_select'
+          value={category}
+          onChange={(e) => updateParam('category', e.target.value)}
+        >
           <option value=''>Все категории</option>
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>
@@ -36,15 +85,43 @@ export function Main() {
             </option>
           ))}
         </select>
+
+        {/* СОРТИРОВКИ */}
+        <select
+          className='main-page_select'
+          value={sort}
+          onChange={(e) => updateParam('sort', e.target.value)}
+        >
+          <option value=''>Без сортировки</option>
+          <option value='price-asc'>Цена по +</option>
+          <option value='price-desc'>Цена по -</option>
+          <option value='name-asc'>Название А-Я</option>
+          <option value='name-desc'>Название Я-А</option>
+        </select>
+
+        {/* ЛИМИТ ТОВАРОВ НА СТРАНИЦЕ */}
+        <select
+          className='main-page_select'
+          value={perPage}
+          onChange={(e) => updateParam('perPage', e.target.value)}
+        >
+          {PER_PAGE_OPTIONS.map((n) => (
+            <option key={n}>{n}</option>
+          ))}
+        </select>
       </div>
 
       <div className='products-list'>
-        {filtered.map((product, index) => (
+        {paginated.map((product, index) => (
           <ProductCard {...product} key={index} />
         ))}
       </div>
 
-      <Pagination page={page} onChange={setPage} tolalPages={6} />
+      <Pagination
+        page={page}
+        onChange={(p) => updateParam('page', String(p))}
+        totalPages={totalPages}
+      />
     </div>
   );
 }

@@ -2,16 +2,16 @@ import './Pagination.css';
 
 interface PaginationProps {
   page: number;
-  tolalPages: number;
+  totalPages: number;
   onChange: (page: number) => void;
 }
 
-export function Pagination({ onChange, page, tolalPages }: PaginationProps) {
-  if (tolalPages <= 1) {
+export function Pagination({ onChange, page, totalPages }: PaginationProps) {
+  if (totalPages <= 1) {
     return null;
   }
 
-  const pages = Array.from({ length: tolalPages }, (_, index) => index + 1);
+  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
     <div className='pagination'>
@@ -36,7 +36,7 @@ export function Pagination({ onChange, page, tolalPages }: PaginationProps) {
       <button
         className='pagination__btn'
         onClick={() => onChange(page + 1)}
-        disabled={page === tolalPages}
+        disabled={page === totalPages}
       >
         →
       </button>

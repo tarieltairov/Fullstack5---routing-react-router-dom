@@ -2,8 +2,10 @@ import {
   // Link,
   NavLink,
 } from 'react-router-dom';
-import './Header.css';
+import styles from './Header.module.scss';
+
 import { useCart } from '../../context/CartContext';
+import clsx from 'clsx';
 
 // Link - простая ссылка
 // NavLink - ссылка с активным состоянием
@@ -38,14 +40,17 @@ export function Header() {
   ];
 
   return (
-    <header>
-      <div className='header_logo'>Shop</div>
+    <header className={styles.header}>
+      <div className={styles.header_logo}>Shop</div>
 
-      <nav className='header_nav'>
+      <nav className={styles.header_nav}>
         {pages.map((route, index) => (
           <NavLink
             className={(val) =>
-              `${val.isActive ? 'active_link' : ''} ${route.badge ? 'header_cart' : ''} header_link `
+              clsx(styles.header_link, {
+                [styles.active_link]: val.isActive,
+                [styles.header_cart]: route.badge,
+              })
             }
             key={index}
             to={route.to}
@@ -53,7 +58,7 @@ export function Header() {
             {route.label}
 
             {!!route.badge && (
-              <span className='header_cart_badge'>{route.badge}</span>
+              <span className={styles.header_cart_badge}>{route.badge}</span>
             )}
           </NavLink>
         ))}

@@ -1,0 +1,60 @@
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 0 20px;
+  background: $white;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &_logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: $primary;
+    letter-spacing: 0.5px;
+  }
+
+  &_nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &_link {
+    color: #555;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.15s ease;
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .active_link {
+    color: $primary;
+    text-decoration: underline;
+  }
+
+  &_cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    &_badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      padding: 0 6px;
+      color: $white;
+      background: $primary;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}

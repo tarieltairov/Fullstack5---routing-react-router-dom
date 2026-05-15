@@ -1,5 +1,5 @@
 // есть 2 способа настройки маршрутизации (react-router-dom)
-import './styles/global.css';
+import './styles/global.scss';
 import { Route, Routes } from 'react-router-dom';
 import { Main } from './pages/Main';
 import { Product } from './pages/Product';
@@ -8,13 +8,25 @@ import { NotFound } from './pages/NotFound';
 import { Cart } from './pages/Cart/Cart';
 import { Checkout } from './pages/Checkout';
 import { CheckoutSuccess } from './pages/CheckoutSuccess';
+import { Test } from './components/Test';
+import { Example } from './components/Example';
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path='about' element={<h1>Страница О нас</h1>} />
+        <Route
+          path='about'
+          element={
+            <div>
+              <h1>Страница О нас</h1>
+
+              <Example />
+              <Test />
+            </div>
+          }
+        />
         <Route path='product/:id' element={<Product />} />
         <Route path='cart' element={<Cart />} />
 

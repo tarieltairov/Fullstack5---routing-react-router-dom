@@ -10,6 +10,7 @@ import { Checkout } from './pages/Checkout';
 import { CheckoutSuccess } from './pages/CheckoutSuccess';
 import { Test } from './components/Test';
 import { Example } from './components/Example';
+import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   return (
@@ -30,8 +31,10 @@ function App() {
         <Route path='product/:id' element={<Product />} />
         <Route path='cart' element={<Cart />} />
 
-        <Route path='checkout' element={<Checkout />} />
-        <Route path='checkout/success' element={<CheckoutSuccess />} />
+        <Route element={<PrivateRoute />}>
+          <Route path='checkout' element={<Checkout />} />
+          <Route path='checkout/success' element={<CheckoutSuccess />} />
+        </Route>
       </Route>
 
       <Route path='/login' element={<h1>Страница авторизации</h1>} />

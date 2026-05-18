@@ -1,6 +1,6 @@
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { products } from '../../mock/products';
-import './Product.css';
+import styles from './Product.module.scss';
 import { BackButton } from '../../components/BackButton';
 import { useCart } from '../../context/CartContext';
 import { Counter } from '../../components/Counter';
@@ -21,22 +21,24 @@ export function Product() {
   const inCart = getItemQuantity(currentProduct.id) > 0;
 
   return (
-    <div className='product-page'>
+    <div className={styles.productPage}>
       <BackButton
         btnText={
           location.state?.from === '/' ? 'Вернуться на главную' : 'Назад'
         }
       />
 
-      <h1 className='product-page_title'>Страница продукта</h1>
+      <h1 className={styles.productPage_title}>Страница продукта</h1>
 
-      <h2 className='product-page_name'>{currentProduct.title}</h2>
-      <p className='product-page_price'>цена: {currentProduct.price}</p>
+      <h2 className={styles.productPage_name}>{currentProduct.title}</h2>
+      <p className={styles.productPage_price}>цена: {currentProduct.price}</p>
 
-      <p className='product-page_description'>{currentProduct.description}</p>
+      <p className={styles.productPage_description}>
+        {currentProduct.description}
+      </p>
 
       <img
-        className='product-page_img'
+        className={styles.productPage_img}
         src={currentProduct.imageUrl}
         alt={currentProduct.title}
         onError={(event) => {
@@ -44,12 +46,12 @@ export function Product() {
         }}
       />
 
-      <div className='product-page_actions'>
+      <div className={styles.productPage_actions}>
         {inCart ? (
           <Counter productId={currentProduct.id} />
         ) : (
           <button
-            className='product-page_btn'
+            className={styles.productPage_btn}
             onClick={() => addToCart(currentProduct)}
           >
             Добавить в корзину

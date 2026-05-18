@@ -1,5 +1,5 @@
 import { useCart } from '../../context/CartContext';
-import './Counter.css';
+import styles from './Counter.module.scss';
 
 interface CounterProps {
   productId: number;
@@ -22,19 +22,19 @@ export function Counter({ productId }: CounterProps) {
   };
 
   return (
-    <div className='counter'>
+    <div className={styles.counter}>
       <button
-        className='counter__btn'
+        className={styles.counter__btn}
         onClick={(e) => handleChangeCount(e, 'minus')}
         aria-label='Уменьшить'
       >
         -
       </button>
 
-      <span className='counter__value'>{quantity}</span>
+      <span className={styles.counter__value}>{quantity}</span>
 
       <button
-        className='counter__btn'
+        className={styles.counter__btn}
         onClick={(e) => handleChangeCount(e, 'plus')}
         aria-label='Увеличить'
       >

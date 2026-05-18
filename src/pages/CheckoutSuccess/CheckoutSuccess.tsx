@@ -1,5 +1,5 @@
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import './CheckoutSuccess.css';
+import styles from './CheckoutSuccess.module.scss';
 
 interface SuccessState {
   orderId: number;
@@ -16,20 +16,20 @@ export function CheckoutSuccess() {
   }
 
   return (
-    <div className='success'>
-      <div className='success__icon'>✓</div>
-      <h1 className='success__title'>Заказ оформлен!</h1>
-      <p className='success__text'>
+    <div className={styles.success}>
+      <div className={styles.success__icon}>✓</div>
+      <h1 className={styles.success__title}>Заказ оформлен!</h1>
+      <p className={styles.success__text}>
         Спасибо за покупку. Номер вашего заказа: <b>#{state.orderId}</b>
       </p>
-      <p className='success__text'>
+      <p className={styles.success__text}>
         Сумма к оплате: <b>{state.total} сом</b>
       </p>
-      <p className='success__hint'>
+      <p className={styles.success__hint}>
         Мы свяжемся с вами по указанному телефону для подтверждения доставки.
       </p>
 
-      <Link to='/' className='success__btn'>
+      <Link to='/' className={styles.success__btn}>
         Вернуться к покупкам
       </Link>
     </div>

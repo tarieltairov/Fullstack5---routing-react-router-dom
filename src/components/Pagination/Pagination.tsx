@@ -1,4 +1,5 @@
-import './Pagination.css';
+import clsx from 'clsx';
+import styles from './Pagination.module.scss';
 
 interface PaginationProps {
   page: number;
@@ -14,9 +15,9 @@ export function Pagination({ onChange, page, totalPages }: PaginationProps) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className='pagination'>
+    <div className={styles.pagination}>
       <button
-        className='pagination__btn'
+        className={styles.pagination__btn}
         onClick={() => onChange(page - 1)}
         disabled={page === 1}
       >
@@ -26,7 +27,9 @@ export function Pagination({ onChange, page, totalPages }: PaginationProps) {
       {pages.map((i) => (
         <button
           key={i}
-          className={`pagination__btn ${i === page ? 'pagination__btn--active' : ''}`}
+          className={clsx(styles.pagination__btn, {
+            [styles.pagination__btnActive]: i === page,
+          })}
           onClick={() => onChange(i)}
         >
           {i}
@@ -34,7 +37,7 @@ export function Pagination({ onChange, page, totalPages }: PaginationProps) {
       ))}
 
       <button
-        className='pagination__btn'
+        className={styles.pagination__btn}
         onClick={() => onChange(page + 1)}
         disabled={page === totalPages}
       >

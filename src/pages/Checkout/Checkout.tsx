@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
-import './Checkout.css';
+import styles from './Checkout.module.scss';
 import type { OrderErrors, OrderForm } from '../../types/order';
 import { useNavigate } from 'react-router-dom';
 
@@ -90,15 +90,15 @@ export function Checkout() {
   }, []);
 
   return (
-    <div className='checkout'>
-      <h1 className='checkout__title'>Оформление заказа</h1>
+    <div className={styles.checkout}>
+      <h1 className={styles.checkout__title}>Оформление заказа</h1>
 
-      <div className='checkout__layout'>
-        <form className='checkout__form' onSubmit={handleSubmit}>
+      <div className={styles.checkout__layout}>
+        <form className={styles.checkout__form} onSubmit={handleSubmit}>
           {/* имя */}
-          <div className='checkout__field'>
+          <div className={styles.checkout__field}>
             <label htmlFor='name'>
-              Имя <span className='required'>*</span>
+              Имя <span className={styles.required}>*</span>
             </label>
 
             <input
@@ -111,14 +111,14 @@ export function Checkout() {
             />
 
             {errors.name && (
-              <span className='checkout__error'>{errors.name}</span>
+              <span className={styles.checkout__error}>{errors.name}</span>
             )}
           </div>
 
           {/* телефон */}
-          <div className='checkout__field'>
+          <div className={styles.checkout__field}>
             <label htmlFor='phone'>
-              Телефон <span className='required'>*</span>
+              Телефон <span className={styles.required}>*</span>
             </label>
 
             <input
@@ -131,14 +131,14 @@ export function Checkout() {
             />
 
             {errors.phone && (
-              <span className='checkout__error'>{errors.phone}</span>
+              <span className={styles.checkout__error}>{errors.phone}</span>
             )}
           </div>
 
           {/* Адрес */}
-          <div className='checkout__field'>
+          <div className={styles.checkout__field}>
             <label htmlFor='address'>
-              Адрес <span className='required'>*</span>
+              Адрес <span className={styles.required}>*</span>
             </label>
 
             <input
@@ -151,12 +151,12 @@ export function Checkout() {
             />
 
             {errors.address && (
-              <span className='checkout__error'>{errors.address}</span>
+              <span className={styles.checkout__error}>{errors.address}</span>
             )}
           </div>
 
           {/* комментарий */}
-          <div className='checkout__field'>
+          <div className={styles.checkout__field}>
             <label htmlFor='comment'>Комментарий к заказу</label>
 
             <textarea
@@ -171,19 +171,19 @@ export function Checkout() {
 
           <button
             disabled={isSubmitting}
-            className='checkout__submit'
+            className={styles.checkout__submit}
             type='submit'
           >
             {isSubmitting ? 'Оформляем ...' : 'Подтвердить заказ'}
           </button>
         </form>
 
-        <aside className='checkout__summary'>
-          <h2 className='checkout__summary-title'>Ваш заказ</h2>
+        <aside className={styles.checkout__summary}>
+          <h2 className={styles.checkout__summaryTitle}>Ваш заказ</h2>
 
-          <ul className='checkout__items'>
+          <ul className={styles.checkout__items}>
             {cart.map((item) => (
-              <li key={item.id} className='checkout__item'>
+              <li key={item.id} className={styles.checkout__item}>
                 <span>
                   {item.title} x {item.quantity}
                 </span>
@@ -192,7 +192,7 @@ export function Checkout() {
             ))}
           </ul>
 
-          <div className='checkout__total'>
+          <div className={styles.checkout__total}>
             Итого: <b>{totalPrice} сом</b>
           </div>
         </aside>

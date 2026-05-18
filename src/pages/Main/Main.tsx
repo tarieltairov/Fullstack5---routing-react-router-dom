@@ -3,7 +3,7 @@ import { Pagination } from '../../components/Pagination';
 import { ProductCard } from '../../components/ProductCard';
 import { CATEGORIES, products } from '../../mock/products';
 import { buildNextParams } from '../../utils/searchParams';
-import './Main.css';
+import styles from './Main.module.scss';
 import { useSearchParams } from 'react-router-dom';
 
 const PER_PAGE_OPTIONS = [3, 4, 6, 12] as const;
@@ -60,12 +60,12 @@ export function Main() {
   const paginated = sorted.slice((page - 1) * perPage, page * perPage);
 
   return (
-    <div className='main-page'>
-      <h1 className='main-page_title'>Каталог</h1>
+    <div className={styles.mainPage}>
+      <h1 className={styles.mainPage_title}>Каталог</h1>
 
-      <div className='main-page_controls'>
+      <div className={styles.mainPage_controls}>
         <input
-          className='main-page_search'
+          className={styles.mainPage_search}
           type='text'
           placeholder='Найти товар'
           value={search}
@@ -74,7 +74,7 @@ export function Main() {
 
         {/* ФИЛЬТР ПО КАТЕГОРИИ */}
         <select
-          className='main-page_select'
+          className={styles.mainPage_select}
           value={category}
           onChange={(e) => updateParam('category', e.target.value)}
         >
@@ -88,7 +88,7 @@ export function Main() {
 
         {/* СОРТИРОВКИ */}
         <select
-          className='main-page_select'
+          className={styles.mainPage_select}
           value={sort}
           onChange={(e) => updateParam('sort', e.target.value)}
         >
@@ -101,7 +101,7 @@ export function Main() {
 
         {/* ЛИМИТ ТОВАРОВ НА СТРАНИЦЕ */}
         <select
-          className='main-page_select'
+          className={styles.mainPage_select}
           value={perPage}
           onChange={(e) => updateParam('perPage', e.target.value)}
         >
@@ -111,7 +111,7 @@ export function Main() {
         </select>
       </div>
 
-      <div className='products-list'>
+      <div className={styles.productsList}>
         {paginated.map((product, index) => (
           <ProductCard {...product} key={index} />
         ))}
